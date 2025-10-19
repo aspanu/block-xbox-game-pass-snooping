@@ -1,4 +1,4 @@
-# Xbox Privacy – Keep Game Pass, Stop Game Snooping
+# Xbox Privacy – Keep Game Pass, Stop Game Snooping - Not currently working
 
 ## block-xbox-game-pass-snooping
 A PowerShell utility that lets you **keep Xbox Game Pass fully functional** while **blocking Windows and the Xbox app from auto-detecting every game installed on your PC**.
