@@ -7,10 +7,11 @@ A PowerShell utility that lets you **keep Xbox Game Pass fully functional** whil
 
 ## 🎯 What It Does
 
-- Prevents Windows “Game Detection” and Xbox Game Bar services from scanning all drives for `.exe` files.
-- Disables scheduled tasks and registry flags that make the Xbox app list your Steam / Epic / GOG games.
-- Keeps `Gaming Services` active so **Game Pass games, cloud saves, and achievements** continue to work.
-- Optional: clears the Xbox app’s cached list of previously detected non-Store games.
+- Prevents Windows “Game Detection” and Xbox Game Bar services from scanning all drives.
+- Disables registry flags and scheduled tasks that auto-add Steam/Epic/GOG titles.
+- Keeps Game Pass downloads, cloud saves, and achievements fully working.
+- (Optional) **DeepClean** mode disables Xbox Live background services and telemetry so “last played” no longer updates for non-Game Pass games.
+- (Optional) Clears cached lists of previously detected non-Store games.
 - Fully reversible — run with `-Undo` to restore defaults.
 
 ---
@@ -18,24 +19,21 @@ A PowerShell utility that lets you **keep Xbox Game Pass fully functional** whil
 ## ⚙️ Usage
 
 1. **Download** `xbox-privacy-keep-gamepass.ps1`.
-2. **Open PowerShell as Administrator.**
-3. Run one of the following:
+2. **Open PowerShell as Administrator** in the script’s folder.
+3. Choose one of these:
 
 ```powershell
-# Apply privacy tweaks
-.\xbox-privacy-keep-gamepass.ps1
+# Basic privacy mode (stop drive scanning only)
+powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1
 
-# Undo and restore defaults
-.\xbox-privacy-keep-gamepass.ps1 -Undo
+# DeepClean mode (also disable Xbox Live presence & telemetry)
+powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1 -DeepClean
 
-# Apply and also clear Xbox app external-game cache
-.\xbox-privacy-keep-gamepass.ps1 -ClearExternalGameCache
+# DeepClean + clear cached external games
+powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1 -DeepClean -ClearExternalGameCache
+
+# Restore all defaults
+powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1 -Undo
 ```
-
-## Possible Errors
-
-If you get the `cannot be loaded because runing scripts is disabled on this system` error, then you can run just this script once without changing your policies at all:
-
-`powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1`
 
 Please send any PRs for any other issues. Thanks!
