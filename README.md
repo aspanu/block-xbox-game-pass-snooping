@@ -31,3 +31,11 @@ A PowerShell utility that lets you **keep Xbox Game Pass fully functional** whil
 # Apply and also clear Xbox app external-game cache
 .\xbox-privacy-keep-gamepass.ps1 -ClearExternalGameCache
 ```
+
+## Possible Errors
+
+If you get the `cannot be loaded because runing scripts is disabled on this system` error, then you can run just this script once without changing your policies at all:
+
+`powershell -NoProfile -ExecutionPolicy Bypass -File .\xbox-privacy-keep-gamepass.ps1`
+
+Please send any PRs for any other issues. Thanks!
